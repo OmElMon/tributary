@@ -1,4 +1,6 @@
 FROM python:3.11
-
-CMD ["echo", "hello world"]
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+COPY ./entrypoint.py .
+CMD ["gunicorn", "entrypoint:app"]
 
