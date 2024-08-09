@@ -1,6 +1,12 @@
 FROM python:3.11
-COPY ./requirements.txt .
+
+# Copy the requirements.txt and install dependencies
+COPY requirements.txt .
 RUN pip install -r requirements.txt
-COPY ./entrypoint.py .
+
+# Copy the entrypoint.py script
+COPY entrypoint.py .
+
+# Set the command to run the app
 CMD ["gunicorn", "entrypoint:app"]
 
